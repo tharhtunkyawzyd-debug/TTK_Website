@@ -1,58 +1,219 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>TTK Web Page</title>
-    </head>
-    <body>
-        <h1><em><b>Welcome from TTK's Travel World</b></em></h1>
-        <p>
-                  This web page of mine showcases beautiful landscapes, mountains, and waters from various travel destinations all around the world. I truly hope that when you visit my website, it will provide you with the utmost satisfaction. Furthermore, I personally have a dream to travel across the entire world once our nation becomes peaceful and stable again.
-        </p>
-        <P> Check Out to see <a href="https://travelbetweenthelines.co.uk/travel/wonderful-views-across-the-world/">Beautiful Places</a> for more information.
-        </P>
-        <p> <span style ="color:blue">There are 10 Places where I wanted to visit since I was young and you must be a <span style ="color:red"><b><abbr title=" Sor Kyi Bel">SKB</abbr></b> </span>if you want to visit.</p>
-    </body>
-    <hr>
-    <h2>Bernese Oberland at Switzerland</h2>
-    <ul>
-        <li>The Iconic Trio: This region is home to the world-famous mountain trio—the Eiger, Mönch, and Jungfrau—standing side by side in a spectacular display of nature.</li>
-        <li>Top of Europe: Visit Jungfraujoch, Europe’s highest railway station, situated at 11,332 feet above sea level for breathtaking alpine views.</li>
-        <li>The Twin Lakes: Discover the world-renowned resort town of Interlaken, perfectly nestled between the crystal-clear turquoise waters of Lake Thun and Lake Brienz.</li>
-        <li>Cinematic Beauty: Experience the fairy-tale scenery of Iseltwald, the famous filming location of the piano scene from the popular K-drama "Crash Landing on You."</li>
-    </ul>
-    </hr>
-        <img src="SZL3.jpg">
-    <h2>Registration Form for Remark</h2>
-    <form action="/submit" method="post">
-      <label for="un">Username :</label>
-      <input type="text" id="un" name="un">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Teacher 🌸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      <br>
-      <br>
-      <label for="fb">Feedback from Travellers :</label>
-      <textarea id="fb" name="fb" rows="4" cols="50"></textarea>
-      <br><br>
-      <label for="con">Country :</label>
-      <select id="con" name="con">
-        <option value="Myanmar">Myanmar</option>
-        <option value="Japan">Japan</option>
-        <option value="China">China</option>
-        <option value="Korea">Korea</option>
-        <option value="USA">USA</option>
-      </select>
-      <br>
-      <br>
-      <input type="submit" value="Register">  
-    </form>
-    <br>
-    <br>
-    <form>
-        <fieldset>
-            <label for="name">Name :</label>
-            <input type="text" id="na" name="na">
-            <label for="em">Email :</label>
-            <input type="text" id="em" name="em">
-        </fieldset>
-        <input type="submit" value="Contact"> 
-    </form>
-</html> 
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #fbc531, #f5f6fa);
+            font-family: 'Pyidaungsu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ကျောင်းက ပုံစံမျိုးလေး ဖြစ်အောင် အဝါရောင်နုနု Background နဲ့ ပန်းပွင့်လေးတွေ */
+        .falling-flower {
+            position: absolute;
+            color: #ff7675;
+            font-size: 20px;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* စာအိတ် Container */
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #ff7675;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* စာအိတ် အဖုံး */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            z-index: 3;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 110px solid #d63031;
+            transform-origin: top;
+            transition: transform 0.5s ease 0.3s;
+        }
+
+        /* စာအိတ် ဘေးခေါက်များ */
+        .envelope::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            z-index: 2;
+            border-left: 150px solid #e17055;
+            border-right: 150px solid #e17055;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid #e17055;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* အထဲက စာရွက် */
+        .letter {
+            position: absolute;
+            bottom: 5px;
+            left: 15px;
+            width: 270px;
+            height: 180px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease, z-index 0s ease 0.5s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter h2 {
+            font-size: 18px;
+            color: #d63031;
+            margin-bottom: 10px;
+        }
+
+        .letter p {
+            font-size: 14px;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        /* စာအိတ် ဖွင့်လိုက်သည့် အချိန် Effect */
+        .envelope-wrapper.open .envelope::before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .envelope-wrapper.open .letter {
+            transform: translateY(-120px);
+            z-index: 4;
+            height: 250px; /* စာဖတ်လို့ကောင်းအောင် စာရွက်ကို ပိုရှည်ထုတ်လိုက်တာ */
+        }
+
+        /* စာအိတ်ပေါ်က တံဆိပ်ဝိုင်းလေး */
+        .heart-seal {
+            position: absolute;
+            top: 90px;
+            left: 135px;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 50%;
+            z-index: 4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d63031;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .envelope-wrapper.open .heart-seal {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hint {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            color: #2d3436;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="heart-seal">🌸</div>
+        <div class="envelope">
+            <div class="letter">
+                <h2>ဆရာမလေး ခဏလောက် အာရုံစိုက်ပေးပါဦး... 👩‍🏫</h2>
+                <p id="typedText">ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်။ ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ်နော်။ ✨</p>
+            </div>
+        </div>
+        <div class="hint">စာအိတ်လေးကို နှိပ်ပြီး ဖွင့်ဖတ်ကြည့်ပါနော် ✨</div>
+    </div>
+
+    <script>
+        const wrapper = document.getElementById('envelopeWrapper');
+        const music = document.getElementById('bgMusic');
+
+        wrapper.addEventListener('click', () => {
+            wrapper.classList.toggle('open');
+            
+            // စာအိတ်ဖွင့်တာနဲ့ သီချင်း တန်းပွင့်လာအောင် လုပ်ခြင်း
+            if(wrapper.classList.contains('open')){
+                music.play().catch(error => console.log("Audio play blocked by browser"));
+            } else {
+                music.pause();
+            }
+        });
+
+        // ပန်းပွင့်လေးတွေ အလိုအလျောက် ကြွေကျနေမယ့် စနစ်
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('falling-flower');
+            // ပန်းပွင့်ပုံစံ အမျိုးမျိုး ပြောင်းလို့ရပါတယ်
+            const flowers = ['🌸', '✨', '🎈', '🍀'];
+            flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+            flower.style.opacity = Math.random();
+            flower.style.fontSize = Math.random() * 15 + 15 + 'px';
+            
+            document.body.appendChild(flower);
+            
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        setInterval(createFlower, 300);
+    </script>
+</body>
+</html>
