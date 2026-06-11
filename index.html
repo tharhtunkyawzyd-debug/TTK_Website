@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift for Teacher 👩‍🏫✨</title>
     <style>
-        /* Pyidaungsu Font & Reset */
+        /* Base Styling & Reset */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +27,7 @@
             position: relative;
         }
 
-        /* ကြွေကျနေမည့် ပန်းပွင့်လေးများနှင့် ထီးလေးများ အကျိုးသက်ရောက်မှု */
+        /* ကြွေကျနေမည့် ပန်းပွင့်လေးများနှင့် ထီးလေးများ */
         .falling-item {
             position: absolute;
             color: rgba(255, 255, 255, 0.6);
@@ -109,7 +109,7 @@
             pointer-events: auto;
         }
 
-        /* 📦 MODAL BOX (အလယ်ကွက်တိ ကွက်တိပေါ်မည့်စနစ်) */
+        /* 📦 MODAL BOX */
         .modal-box {
             background: #ffffff;
             width: 100%;
@@ -209,7 +209,7 @@
 <body>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="https://pub-84080bc232674e2098679f6479624504.r2.dev/Kyaw%20Thi%20Han%20-%20Seik%20Kuu%20Lay%20Ywat%20Lwint%20Mal.mp3" type="audio/mpeg">
     </audio>
 
     <div class="gift-card" id="giftCard">
@@ -240,12 +240,12 @@
         const typedMessage = document.getElementById('typed-message');
         const slideshow = document.getElementById('slideshow');
 
-        // 💬 မင်းရဲ့ အချိုမြိန်ဆုံး စာသားအသစ်စက်စက်ကို ညှိပေးထားပါတယ်ဗျာ
+        // 💬 မင်းတောင်းဆိုထားတဲ့ စာသားစစ်စစ်
         const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... ကျွန်တေ့ာ်ရဲ့ မပိုးအတွက် စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်နော်။ 
 
 ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ် အမ အစစအရာရာလဲ ဂရုစိုက်ပြီးတော့ နေပါနော် ဘယ်သွားသွား မိုးမမိအောင် ထီးလေးယူသွားပါနော် ☔️💙`;
 
-        // 📸 ဆရာမလေးရဲ့ ပုံလင့်ခ် ၇ ခုလုံး
+        // 📸 ပုံလင့်ခ် ၇ ခုလုံး
         const images = [
             'https://i.ibb.co/YFw4br5H/image-1.jpg',
             'https://i.ibb.co/rKFTt4NH/image-2.jpg',
@@ -290,6 +290,7 @@
         closeBtn.addEventListener('click', () => {
             modalOverlay.classList.remove('active');
             music.pause();
+            music.currentTime = 0; // သီချင်းကို အစကနေ ပြန်စရန်
             
             isTyping = false;
             typingIdx = 0;
@@ -338,7 +339,7 @@
             }
         }
 
-        // Falling items generator (မိုးမမိအောင် ထီးလေးပါ ထည့်ပေးထားတယ်နော်)
+        // Falling items generator
         function createFallingItem() {
             const item = document.createElement('div');
             item.classList.add('falling-item');
