@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Teacher 👩‍🏫✨</title>
+    <title>Gift for Teacher 👩‍🏫✨</title>
     <style>
-        /* Pyidaungsu Font */
+        /* Pyidaungsu Font & Base Styling */
         * {
             margin: 0;
             padding: 0;
@@ -17,21 +17,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* ကျောက်သင်ပုန်း ပုံစံ (Blackboard effect) */
+            /* ကျောက်သင်ပုန်း ပုံစံ နောက်ခံ */
             background-color: #2c3e50;
             background-image: 
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 0c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-40-7c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm20-13c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
                 linear-gradient(to bottom right, #2c3e50, #1a252f);
-            font-family: 'Pyidaungsu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Pyidaungsu', 'Segoe UI', sans-serif;
             overflow: hidden;
             position: relative;
         }
 
-        /* Falling Items Effect */
+        /* ကြွေကျနေမည့် ပန်းပွင့်လေးများ အကျိုးသက်ရောက်မှု */
         .falling-item {
             position: absolute;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
             pointer-events: none;
             animation: fall linear infinite;
         }
@@ -42,103 +41,118 @@
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Envelope Container */
-        .envelope-wrapper {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            z-index: 10;
-        }
-
-        .envelope-wrapper:hover {
-            transform: scale(1.05);
-        }
-
-        .envelope {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: #f1c40f; /* အဝါရောင်နုနု စာအိတ် */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border-radius: 0 0 10px 10px;
-        }
-
-        /* Envelope Flap */
-        .envelope::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            z-index: 3;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #f39c12;
-            transform-origin: top;
-            transition: transform 0.5s ease 0.3s;
-        }
-
-        /* Envelope Sides */
-        .envelope::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            z-index: 2;
-            border-left: 150px solid #f1c40f;
-            border-right: 150px solid #f1c40f;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid #f1c40f;
-            border-radius: 0 0 10px 10px;
-        }
-
-        /* Letter */
-        .letter {
-            position: absolute;
-            bottom: 5px;
-            left: 15px;
-            width: 270px;
-            height: 180px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            z-index: 1;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.5s ease, z-index 0s ease 0.5s;
+        /* Main Gift Card (အလယ်က ကတ်ပြားလေး) */
+        .gift-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
-            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 4px dashed #f39c12;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .gift-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .gift-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        .gift-card h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .gift-card p {
+            color: #7f8c8d;
+            font-size: 13px;
+        }
+
+        /* 🔳 MODAL SYSTEM (ပေါ်လာမည့် Window အကွက်) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75); /* ပတ်ဝန်းကျင်ကို မှောင်ချပစ်မည် */
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 999;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Open Envelope Effect */
-        .envelope-wrapper.open .envelope::before {
-            transform: rotateX(180deg);
-            z-index: 0;
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
         }
 
-        .envelope-wrapper.open .letter {
-            transform: translateY(-220px);
-            z-index: 4;
-            height: 420px; /* စာရွက်အရှည် */
+        /* ❌ Close Button (ပိတ်ရန်ခလုတ်) */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #95a5a6;
+            cursor: pointer;
+            transition: color 0.2s;
         }
 
-        /* 📸 Slideshow Container */
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+
+        /* 📸 Slideshow Image inside Modal */
         .slideshow-container {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-radius: 50%;
             overflow: hidden;
-            border: 5px solid #f39c12;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: none;
+            border: 6px solid #f39c12;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .envelope-wrapper.open .slideshow-container {
-            display: block;
-        }
-
-        /* Slideshow Images */
         .teacher-photo {
             width: 100%;
             height: 100%;
@@ -147,78 +161,33 @@
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 0.8s ease-in-out;
         }
 
         .teacher-photo.active {
             opacity: 1;
         }
 
-        /* Letter Content */
-        .letter-content {
-            display: none;
-            width: 100%;
-        }
-
-        .envelope-wrapper.open .letter-content {
-            display: block;
-        }
-
-        .letter-content h2 {
+        /* 💬 Content Inside Modal */
+        .modal-content h2 {
             font-size: 18px;
             color: #c0392b;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            margin-bottom: 12px;
         }
 
-        /* Typewriter Text Style */
         #typed-message {
             font-size: 14px;
-            color: #2d3436;
+            color: #34495e;
             line-height: 1.8;
-            font-family: 'Pyidaungsu', 'Segoe UI', sans-serif;
+            text-align: justify;
             white-space: pre-wrap;
-            border-right: 2px solid #2d3436;
+            border-right: 2px solid #34495e;
+            padding-right: 3px;
             animation: caret 0.8s infinite;
         }
 
         @keyframes caret {
             50% { border-right-color: transparent; }
-        }
-
-        /* Heart Seal */
-        .heart-seal {
-            position: absolute;
-            top: 90px;
-            left: 135px;
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
-            border-radius: 50%;
-            z-index: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #f39c12;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: opacity 0.3s ease;
-        }
-
-        .envelope-wrapper.open .heart-seal {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .hint {
-            position: absolute;
-            bottom: -40px;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
     </style>
 </head>
@@ -228,34 +197,39 @@
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="envelope-wrapper" id="envelopeWrapper">
-        <div class="heart-seal">🌸</div>
-        <div class="envelope">
-            <div class="letter">
-                <div class="slideshow-container" id="slideshow">
-                    </div>
-                
-                <div class="letter-content">
-                    <h2>ဆရာမလေး ခဏလောက် အာရုံစိုက်ပေးပါဦး... 👩‍🏫✨</h2>
-                    <p id="typed-message"></p>
+    <div class="gift-card" id="giftCard">
+        <div class="gift-icon">🎁</div>
+        <h3>ဆရာမလေးအတွက် လက်ဆောင်မွန်</h3>
+        <p>ဖွင့်ကြည့်ရန် နှိပ်လိုက်ပါဦးနော် ✨</p>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            
+            <div class="slideshow-container" id="slideshow">
                 </div>
+
+            <div class="modal-content">
+                <h2>ဆရာမလေး ခဏလောက် အာရုံစိုက်ပေးပါဦး... 👩‍🏫✨</h2>
+                <p id="typed-message"></p>
             </div>
         </div>
-        <div class="hint">စာအိတ်လေးကို နှိပ်ပြီး ဖွင့်ဖတ်ကြည့်ပါနော် ✨</div>
     </div>
 
     <script>
-        const wrapper = document.getElementById('envelopeWrapper');
+        const giftCard = document.getElementById('giftCard');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeBtn = document.getElementById('closeBtn');
         const music = document.getElementById('bgMusic');
         const typedMessage = document.getElementById('typed-message');
         const slideshow = document.getElementById('slideshow');
-        
-        // 💬 စာသားများ (လိုအပ်ရင် ဒီစာသားလေးကို စိတ်ကြိုက် ပြင်ရေးလို့ ရပါတယ်နော်)
+
         const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်။ 
 
 ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ်နော်။✨`;
 
-        // 📸 မင်းပေးထားတဲ့ ဆရာမလေးရဲ့ ပုံလင့်ခ် ၇ ခု အပြီးအစီး ထည့်သွင်းထားပါတယ်
+        // 📸 မင်းရဲ့ ပုံလင့်ခ် ၇ ခုလုံးကို လင့်ခ်အမှန်စနစ်နဲ့ သေချာထည့်ထားပါတယ်
         const images = [
             'https://i.ibb.co/YFw4br5H/image-1.jpg',
             'https://i.ibb.co/rKFTt4NH/image-2.jpg',
@@ -265,7 +239,7 @@
             'https://i.ibb.co/hFGYp4tb/image-6.jpg',
             'https://i.ibb.co/p6Xktwxy/image-7.jpg'
         ];
-        
+
         let currentSlideIdx = 0;
         let slideInterval;
         let typingIdx = 0;
@@ -283,33 +257,40 @@
 
         const slides = document.querySelectorAll('.teacher-photo');
 
-        wrapper.addEventListener('click', () => {
-            wrapper.classList.toggle('open');
+        // Open Modal Event
+        giftCard.addEventListener('click', () => {
+            modalOverlay.classList.add('active');
             
-            if(wrapper.classList.contains('open')){
-                // 1. Play Music
-                music.play().catch(error => console.log("Audio play blocked by browser"));
-                
-                // 2. Start Typewriter
-                if(!isTyping) {
-                    isTyping = true;
-                    typedMessage.innerHTML = "";
-                    typeWriter();
-                }
+            // Play Music
+            music.play().catch(err => console.log("Audio play blocked"));
 
-                // 3. Start Slideshow
-                startSlideshow();
-            } else {
-                // 1. Pause Music
-                music.pause();
-
-                // 2. Stop/Reset Typewriter
-                isTyping = false;
-                typingIdx = 0;
+            // Start Typewriter
+            if (!isTyping) {
+                isTyping = true;
                 typedMessage.innerHTML = "";
+                typeWriter();
+            }
 
-                // 3. Stop Slideshow
-                stopSlideshow();
+            // Start Slideshow
+            startSlideshow();
+        });
+
+        // Close Modal Event
+        closeBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            music.pause();
+            
+            // Reset States
+            isTyping = false;
+            typingIdx = 0;
+            typedMessage.innerHTML = "";
+            stopSlideshow();
+        });
+
+        // Close modal when clicking outside the box
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeBtn.click();
             }
         });
 
@@ -318,11 +299,11 @@
             if (typingIdx < messageText.length && isTyping) {
                 typedMessage.innerHTML += messageText.charAt(typingIdx);
                 typingIdx++;
-                setTimeout(typeWriter, 80); // Typing speed (ms)
+                setTimeout(typeWriter, 70);
             }
         }
 
-        // Slideshow function
+        // Slideshow Functions
         function showSlide(idx) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[idx].classList.add('active');
@@ -348,30 +329,19 @@
             }
         }
 
-        // Falling items (ပန်းပွင့်နှင့် မြေဖြူစများ ကြွေကျမည့်စနစ်)
+        // Falling Items Generator
         function createFallingItem() {
             const item = document.createElement('div');
             item.classList.add('falling-item');
-            
             const items = ['🌸', '✨', '🎈', '🍀', '▪️', '▫️'];
             item.innerText = items[Math.floor(Math.random() * items.length)];
-            
             item.style.left = Math.random() * 100 + 'vw';
             item.style.animationDuration = Math.random() * 3 + 2 + 's';
             item.style.opacity = Math.random();
             item.style.fontSize = Math.random() * 15 + 15 + 'px';
-            
-            if (item.innerText === '▪️' || item.innerText === '▫️') {
-                item.style.color = 'rgba(255, 255, 255, 0.4)';
-            }
-            
             document.body.appendChild(item);
-            
-            setTimeout(() => {
-                item.remove();
-            }, 5000);
+            setTimeout(() => { item.remove(); }, 5000);
         }
-
         setInterval(createFallingItem, 300);
     </script>
 </body>
