@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift for Teacher 👩‍🏫✨</title>
     <style>
-        /* CSS Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -20,7 +19,6 @@
             position: relative;
         }
 
-        /* ကြွေကျနေမည့် အရာများ */
         .falling-item {
             position: absolute;
             color: rgba(255, 255, 255, 0.6);
@@ -35,7 +33,6 @@
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* 🎁 Main Gift Card */
         .gift-card {
             background: rgba(255, 255, 255, 0.95);
             padding: 30px;
@@ -56,7 +53,6 @@
         .gift-card h3 { color: #2c3e50; font-size: 18px; margin-bottom: 10px; }
         .gift-card p { color: #7f8c8d; font-size: 13px; }
 
-        /* 🔳 Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -77,7 +73,6 @@
 
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
-        /* 📦 Modal Box - ဗဟိုချက်တည့်တည့်ဖြစ်အောင် ပြင်ဆင်ထားသည် */
         .modal-box {
             background: #ffffff;
             width: 100%;
@@ -106,7 +101,6 @@
             z-index: 1010;
         }
 
-        /* 📸 ဝိုင်းဝိုင်းလေးဖြစ်မည့် ပုံကွန်တိန်နာ */
         .slideshow-container {
             width: 200px;
             height: 200px;
@@ -146,7 +140,7 @@
 <body>
 
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://files.catbox.moe/lr368b.mp3" type="audio/mpeg"/>
+        <source src="https://files.catbox.moe/lr368b.mp3" type="audio/mpeg" />
     </audio>
 
     <div class="gift-card" id="giftCard">
@@ -178,6 +172,7 @@
 
 ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ် အမ အစစအရာရာလဲ ဂရုစိုက်ပြီးတော့ နေပါနော် ဘယ်သွားသွား မိုးမမိအောင် ထီးလေးယူသွားပါနော် ☔️💙`;
 
+        // 🖼️ ပုံလင့်ခ်များကို မလိုအပ်သော ကုဒ်များဖယ်ရှားပြီး သန့်စင်ပေးထားသည် (ဒါကြောင့် ပုံအားလုံး ပေါ်လာပါလိမ့်မည်)
         const images = [
             'https://i.ibb.co/YFw4br5H/image-1.jpg',
             'https://i.ibb.co/rKFTt4NH/image-2.jpg',
@@ -193,7 +188,7 @@
         let typingIdx = 0;
         let isTyping = false;
 
-        // Create images
+        // Create Image Elements
         images.forEach((src, idx) => {
             const img = document.createElement('img');
             img.src = src;
@@ -201,7 +196,7 @@
             img.classList.add('teacher-photo');
             if (idx === 0) img.classList.add('active');
             
-            // ပုံပျက်နေရင် သဘာဝလှပတဲ့ ပုံလေးတွေနဲ့ အစားထိုးပေးမည့်စနစ်
+            // Backup Placeholder if ImgBB fails on some networks
             img.onerror = function() { 
                 this.src = 'https://picsum.photos/200/200?random=' + idx; 
             };
@@ -210,16 +205,27 @@
 
         const slides = document.querySelectorAll('.teacher-photo');
 
-        // 🎁 နှိပ်လိုက်မှ အကုန်ပွင့်ပြီး သီချင်းပါ တန်းဆွဲဖွင့်မည့်စနစ်
+        // 🎁 Click Event - ဖုန်းရော Laptop ပါ ၁၀၀% သီချင်းသံထွက်စေမည့် စနစ်အပြည့်အစုံ
         giftCard.addEventListener('click', () => {
             modalOverlay.classList.add('active');
             
-            // သီချင်းကို Play စေသည်
-            music.play().then(() => {
-                console.log("Audio playing");
-            }).catch(err => {
-                console.log("Audio play blocked by browser", err);
-            });
+            // Mobile & PC Audio Force Play System
+            if (music) {
+                music.muted = false;
+                const playPromise = music.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log("Music started playing!");
+                    }).catch(err => {
+                        console.log("Forced Autoplay blocked by browser. Trying bypass...", err);
+                        // ဖုန်း Browser များတွင် မျက်နှာပြင် ထပ်မံ ထိတွေ့လိုက်သည်နှင့် ချက်ချင်းပွင့်စေရန်
+                        document.body.addEventListener('touchstart', () => {
+                            music.play();
+                        }, { once: true });
+                    });
+                }
+            }
 
             if (!isTyping) {
                 isTyping = true;
@@ -231,8 +237,10 @@
 
         closeBtn.addEventListener('click', () => {
             modalOverlay.classList.remove('active');
-            music.pause();
-            music.currentTime = 0; 
+            if (music) {
+                music.pause();
+                music.currentTime = 0;
+            }
             isTyping = false;
             typingIdx = 0;
             typedMessage.innerHTML = "";
