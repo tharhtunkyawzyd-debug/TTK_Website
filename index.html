@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Teacher 👩‍🏫✨</title>
     <style>
+        /* Pyidaungsu Font */
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* ကျောက်သင်ပုန်း ပုံစံ နောက်ခံ */
+            /* ကျောက်သင်ပုန်း ပုံစံ (Blackboard effect) */
             background-color: #2c3e50;
             background-image: 
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 0c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-40-7c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm20-13c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
@@ -57,7 +58,7 @@
             position: relative;
             width: 300px;
             height: 200px;
-            background-color: #f1c40f; 
+            background-color: #f1c40f; /* အဝါရောင်နုနု စာအိတ် */
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border-radius: 0 0 10px 10px;
         }
@@ -117,10 +118,10 @@
         .envelope-wrapper.open .letter {
             transform: translateY(-220px);
             z-index: 4;
-            height: 420px; 
+            height: 420px; /* စာရွက်အရှည် */
         }
 
-        /* Slideshow Container */
+        /* 📸 Slideshow Container */
         .slideshow-container {
             width: 180px;
             height: 180px;
@@ -170,6 +171,7 @@
             line-height: 1.4;
         }
 
+        /* Typewriter Text Style */
         #typed-message {
             font-size: 14px;
             color: #2d3436;
@@ -248,11 +250,12 @@
         const typedMessage = document.getElementById('typed-message');
         const slideshow = document.getElementById('slideshow');
         
-        const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး Сာပြရတာ ပင်ပန်းနေမှာစိုးလို့... စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်။ 
+        // 💬 စာသားများ (လိုအပ်ရင် ဒီစာသားလေးကို စိတ်ကြိုက် ပြင်ရေးလို့ ရပါတယ်နော်)
+        const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်။ 
 
 ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ်နော်။✨`;
 
-        // 📸 လင့်ခ်အမှန် (i.ibb.co) များဖြင့် အသေအချာ ပြင်ဆင်ပေးထားပါတယ်
+        // 📸 မင်းပေးထားတဲ့ ဆရာမလေးရဲ့ ပုံလင့်ခ် ၇ ခု အပြီးအစီး ထည့်သွင်းထားပါတယ်
         const images = [
             'https://i.ibb.co/YFw4br5H/image-1.jpg',
             'https://i.ibb.co/rKFTt4NH/image-2.jpg',
@@ -268,6 +271,7 @@
         let typingIdx = 0;
         let isTyping = false;
 
+        // Initialize Slideshow DOM
         images.forEach((src, idx) => {
             const img = document.createElement('img');
             img.src = src;
@@ -283,30 +287,42 @@
             wrapper.classList.toggle('open');
             
             if(wrapper.classList.contains('open')){
-                music.play().catch(error => console.log("Audio play blocked"));
+                // 1. Play Music
+                music.play().catch(error => console.log("Audio play blocked by browser"));
+                
+                // 2. Start Typewriter
                 if(!isTyping) {
                     isTyping = true;
                     typedMessage.innerHTML = "";
                     typeWriter();
                 }
+
+                // 3. Start Slideshow
                 startSlideshow();
             } else {
+                // 1. Pause Music
                 music.pause();
+
+                // 2. Stop/Reset Typewriter
                 isTyping = false;
                 typingIdx = 0;
                 typedMessage.innerHTML = "";
+
+                // 3. Stop Slideshow
                 stopSlideshow();
             }
         });
 
+        // Typewriter function
         function typeWriter() {
             if (typingIdx < messageText.length && isTyping) {
                 typedMessage.innerHTML += messageText.charAt(typingIdx);
                 typingIdx++;
-                setTimeout(typeWriter, 80);
+                setTimeout(typeWriter, 80); // Typing speed (ms)
             }
         }
 
+        // Slideshow function
         function showSlide(idx) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[idx].classList.add('active');
@@ -321,7 +337,7 @@
             if (!slideInterval) {
                 currentSlideIdx = 0;
                 showSlide(currentSlideIdx);
-                slideInterval = setInterval(nextSlide, 3000);
+                slideInterval = setInterval(nextSlide, 3000); // ၃ စက္ကန့်တစ်ခါ ပုံပြောင်းမည်
             }
         }
 
@@ -332,18 +348,30 @@
             }
         }
 
+        // Falling items (ပန်းပွင့်နှင့် မြေဖြူစများ ကြွေကျမည့်စနစ်)
         function createFallingItem() {
             const item = document.createElement('div');
             item.classList.add('falling-item');
-            const items = ['🌸', '✨', '🎈', '🍀', '▪', '▫'];
+            
+            const items = ['🌸', '✨', '🎈', '🍀', '▪️', '▫️'];
             item.innerText = items[Math.floor(Math.random() * items.length)];
+            
             item.style.left = Math.random() * 100 + 'vw';
             item.style.animationDuration = Math.random() * 3 + 2 + 's';
             item.style.opacity = Math.random();
             item.style.fontSize = Math.random() * 15 + 15 + 'px';
+            
+            if (item.innerText === '▪️' || item.innerText === '▫️') {
+                item.style.color = 'rgba(255, 255, 255, 0.4)';
+            }
+            
             document.body.appendChild(item);
-            setTimeout(() => { item.remove(); }, 5000);
+            
+            setTimeout(() => {
+                item.remove();
+            }, 5000);
         }
+
         setInterval(createFallingItem, 300);
     </script>
 </body>
