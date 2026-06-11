@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift for Teacher 👩‍🏫✨</title>
     <style>
-        /* Pyidaungsu Font & Base Styling */
+        /* Pyidaungsu Font & Reset */
         * {
             margin: 0;
             padding: 0;
@@ -22,17 +22,18 @@
             background-image: 
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 0c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-40-7c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm20-13c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
                 linear-gradient(to bottom right, #2c3e50, #1a252f);
-            font-family: 'Pyidaungsu', 'Segoe UI', sans-serif;
+            font-family: 'Pyidaungsu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
             position: relative;
         }
 
-        /* ကြွေကျနေမည့် ပန်းပွင့်လေးများ အကျိုးသက်ရောက်မှု */
+        /* ကြွေကျနေမည့် ပန်းပွင့်လေးများနှင့် ထီးလေးများ အကျိုးသက်ရောက်မှု */
         .falling-item {
             position: absolute;
             color: rgba(255, 255, 255, 0.6);
             pointer-events: none;
             animation: fall linear infinite;
+            z-index: 1;
         }
 
         @keyframes fall {
@@ -41,7 +42,7 @@
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Main Gift Card (အလယ်က ကတ်ပြားလေး) */
+        /* 🎁 Main Gift Card */
         .gift-card {
             background: rgba(255, 255, 255, 0.95);
             padding: 30px;
@@ -52,7 +53,8 @@
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             max-width: 320px;
-            width: 100%;
+            width: 90%;
+            z-index: 10;
         }
 
         .gift-card:hover {
@@ -61,7 +63,7 @@
         }
 
         .gift-icon {
-            font-size: 60px;
+            font-size: 65px;
             margin-bottom: 15px;
             animation: bounce 2s infinite;
         }
@@ -83,14 +85,14 @@
             font-size: 13px;
         }
 
-        /* 🔳 MODAL SYSTEM (ပေါ်လာမည့် Window အကွက်) */
+        /* 🔳 MODAL OVERLAY */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75); /* ပတ်ဝန်းကျင်ကို မှောင်ချပစ်မည် */
+            background: rgba(0, 0, 0, 0.8); 
             backdrop-filter: blur(5px);
             display: flex;
             justify-content: center;
@@ -99,6 +101,7 @@
             pointer-events: none;
             transition: opacity 0.4s ease;
             z-index: 999;
+            padding: 20px;
         }
 
         .modal-overlay.active {
@@ -106,13 +109,14 @@
             pointer-events: auto;
         }
 
+        /* 📦 MODAL BOX (အလယ်ကွက်တိ ကွက်တိပေါ်မည့်စနစ်) */
         .modal-box {
             background: #ffffff;
-            width: 90%;
-            max-width: 450px;
+            width: 100%;
+            max-width: 420px;
             border-radius: 25px;
             padding: 25px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             text-align: center;
             position: relative;
             transform: scale(0.7);
@@ -120,37 +124,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-overlay.active .modal-box {
             transform: scale(1);
         }
 
-        /* ❌ Close Button (ပိတ်ရန်ခလုတ်) */
+        /* ❌ Close Button */
         .close-btn {
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 24px;
+            font-size: 28px;
             color: #95a5a6;
             cursor: pointer;
             transition: color 0.2s;
+            line-height: 1;
         }
 
         .close-btn:hover {
             color: #e74c3c;
         }
 
-        /* 📸 Slideshow Image inside Modal */
+        /* 📸 Slideshow Container */
         .slideshow-container {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             position: relative;
+            margin-top: 10px;
             margin-bottom: 20px;
             border-radius: 50%;
             overflow: hidden;
             border: 6px solid #f39c12;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            flex-shrink: 0;
         }
 
         .teacher-photo {
@@ -168,13 +177,19 @@
             opacity: 1;
         }
 
-        /* 💬 Content Inside Modal */
+        /* 💬 Content Section */
+        .modal-content {
+            width: 100%;
+        }
+
         .modal-content h2 {
             font-size: 18px;
             color: #c0392b;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
+        /* Typewriter Box */
         #typed-message {
             font-size: 14px;
             color: #34495e;
@@ -225,11 +240,12 @@
         const typedMessage = document.getElementById('typed-message');
         const slideshow = document.getElementById('slideshow');
 
-        const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်။ 
+        // 💬 မင်းရဲ့ အချိုမြိန်ဆုံး စာသားအသစ်စက်စက်ကို ညှိပေးထားပါတယ်ဗျာ
+        const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... ကျွန်တေ့ာ်ရဲ့ မပိုးအတွက် စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်နော်။ 
 
-ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ်နော်။✨`;
+ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ် အမ အစစအရာရာလဲ ဂရုစိုက်ပြီးတော့ နေပါနော် ဘယ်သွားသွား မိုးမမိအောင် ထီးလေးယူသွားပါနော် ☔️💙`;
 
-        // 📸 မင်းရဲ့ ပုံလင့်ခ် ၇ ခုလုံးကို လင့်ခ်အမှန်စနစ်နဲ့ သေချာထည့်ထားပါတယ်
+        // 📸 ဆရာမလေးရဲ့ ပုံလင့်ခ် ၇ ခုလုံး
         const images = [
             'https://i.ibb.co/YFw4br5H/image-1.jpg',
             'https://i.ibb.co/rKFTt4NH/image-2.jpg',
@@ -245,7 +261,7 @@
         let typingIdx = 0;
         let isTyping = false;
 
-        // Initialize Slideshow DOM
+        // Initialize Slideshow Images
         images.forEach((src, idx) => {
             const img = document.createElement('img');
             img.src = src;
@@ -260,18 +276,13 @@
         // Open Modal Event
         giftCard.addEventListener('click', () => {
             modalOverlay.classList.add('active');
-            
-            // Play Music
             music.play().catch(err => console.log("Audio play blocked"));
 
-            // Start Typewriter
             if (!isTyping) {
                 isTyping = true;
                 typedMessage.innerHTML = "";
                 typeWriter();
             }
-
-            // Start Slideshow
             startSlideshow();
         });
 
@@ -280,14 +291,12 @@
             modalOverlay.classList.remove('active');
             music.pause();
             
-            // Reset States
             isTyping = false;
             typingIdx = 0;
             typedMessage.innerHTML = "";
             stopSlideshow();
         });
 
-        // Close modal when clicking outside the box
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
                 closeBtn.click();
@@ -303,7 +312,7 @@
             }
         }
 
-        // Slideshow Functions
+        // Slideshow functions
         function showSlide(idx) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[idx].classList.add('active');
@@ -318,7 +327,7 @@
             if (!slideInterval) {
                 currentSlideIdx = 0;
                 showSlide(currentSlideIdx);
-                slideInterval = setInterval(nextSlide, 3000); // ၃ စက္ကန့်တစ်ခါ ပုံပြောင်းမည်
+                slideInterval = setInterval(nextSlide, 3000); 
             }
         }
 
@@ -329,11 +338,11 @@
             }
         }
 
-        // Falling Items Generator
+        // Falling items generator (မိုးမမိအောင် ထီးလေးပါ ထည့်ပေးထားတယ်နော်)
         function createFallingItem() {
             const item = document.createElement('div');
             item.classList.add('falling-item');
-            const items = ['🌸', '✨', '🎈', '🍀', '▪️', '▫️'];
+            const items = ['🌸', '✨', '🎈', '🍀', '☔️', 'ထီး'];
             item.innerText = items[Math.floor(Math.random() * items.length)];
             item.style.left = Math.random() * 100 + 'vw';
             item.style.animationDuration = Math.random() * 3 + 2 + 's';
