@@ -5,131 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift for Teacher 👩‍🏫✨</title>
     <style>
-        /* Base Styling & Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Base Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* ကျောက်သင်ပုန်း ပုံစံ နောက်ခံ */
             background-color: #2c3e50;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 0c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-40-7c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm20-13c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-                linear-gradient(to bottom right, #2c3e50, #1a252f);
-            font-family: 'Pyidaungsu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: linear-gradient(to bottom right, #2c3e50, #1a252f);
+            font-family: 'Pyidaungsu', 'Segoe UI', sans-serif;
             overflow: hidden;
             position: relative;
         }
 
-        /* ကြွေကျနေမည့် ပန်းပွင့်လေးများနှင့် ထီးလေးများ */
-        .falling-item {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.6);
-            pointer-events: none;
-            animation: fall linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* 🎁 Main Gift Card */
-        .gift-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border: 4px dashed #f39c12;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            max-width: 320px;
-            width: 90%;
-            z-index: 10;
-        }
-
-        .gift-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
-        }
-
-        .gift-icon {
-            font-size: 65px;
-            margin-bottom: 15px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-        }
-
-        .gift-card h3 {
-            color: #2c3e50;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .gift-card p {
-            color: #7f8c8d;
-            font-size: 13px;
-        }
-
-        /* 🔳 MODAL OVERLAY */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8); 
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            z-index: 999;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* 📦 MODAL BOX */
+        /* 🔳 MODAL WINDOW (ပေါ်လာမည့် Window အပြား) */
         .modal-box {
             background: #ffffff;
-            width: 100%;
+            width: 90%;
             max-width: 420px;
             border-radius: 25px;
             padding: 25px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             text-align: center;
             position: relative;
-            transform: scale(0.7);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: scale(1);
+            z-index: 1000;
         }
 
         /* ❌ Close Button */
@@ -140,32 +41,27 @@
             font-size: 28px;
             color: #95a5a6;
             cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
         }
 
-        .close-btn:hover {
-            color: #e74c3c;
-        }
-
-        /* 📸 Slideshow Container */
+        /* 📸 Slideshow Image (ဗလာဖြစ်နေတာကို ပြင်ဆင်ထားသောအပိုင်း) */
         .slideshow-container {
             width: 200px;
             height: 200px;
             position: relative;
-            margin-top: 10px;
             margin-bottom: 20px;
             border-radius: 50%;
             overflow: hidden;
-            border: 6px solid #f39c12;
+            border: 6px solid #f39c12; /* အဝါရောင် အဝိုင်းလေး */
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            flex-shrink: 0;
+            /* အလယ်ကွက်တိဖြစ်အောင် CSS ထပ်တိုးသည် */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .teacher-photo {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* ပုံကို အဝိုင်းထဲ ကွက်တိဝင်အောင် ညှိသည် */
             position: absolute;
             top: 0;
             left: 0;
@@ -178,74 +74,47 @@
         }
 
         /* 💬 Content Section */
-        .modal-content {
-            width: 100%;
-        }
-
         .modal-content h2 {
             font-size: 18px;
             color: #c0392b;
             margin-bottom: 15px;
-            line-height: 1.4;
         }
 
-        /* Typewriter Box */
+        /* Typewriter Text */
         #typed-message {
             font-size: 14px;
             color: #34495e;
             line-height: 1.8;
             text-align: justify;
             white-space: pre-wrap;
-            border-right: 2px solid #34495e;
-            padding-right: 3px;
-            animation: caret 0.8s infinite;
-        }
-
-        @keyframes caret {
-            50% { border-right-color: transparent; }
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://pub-84080bc232674e2098679f6479624504.r2.dev/Kyaw%20Thi%20Han%20-%20Seik%20Kuu%20Lay%20Ywat%20Lwint%20Mal.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="gift-card" id="giftCard">
-        <div class="gift-icon">🎁</div>
-        <h3>ဆရာမလေးအတွက် လက်ဆောင်မွန်</h3>
-        <p>ဖွင့်ကြည့်ရန် နှိပ်လိုက်ပါဦးနော် ✨</p>
-    </div>
-
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <span class="close-btn" id="closeBtn">&times;</span>
-            
-            <div class="slideshow-container" id="slideshow">
-                </div>
-
-            <div class="modal-content">
-                <h2>ဆရာမလေး ခဏလောက် အာရုံစိုက်ပေးပါဦး... 👩‍🏫✨</h2>
-                <p id="typed-message"></p>
+    <div class="modal-box">
+        <span class="close-btn">&times;</span>
+        
+        <div class="slideshow-container" id="slideshow">
             </div>
+
+        <div class="modal-content">
+            <h2>ဆရာမလေး ခဏလောက် အာရုံစိုက်ပေးပါဦး... 👩‍🏫✨</h2>
+            <p id="typed-message"></p>
         </div>
     </div>
 
     <script>
-        const giftCard = document.getElementById('giftCard');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeBtn = document.getElementById('closeBtn');
-        const music = document.getElementById('bgMusic');
         const typedMessage = document.getElementById('typed-message');
         const slideshow = document.getElementById('slideshow');
 
-        // 💬 မင်းတောင်းဆိုထားတဲ့ စာသားစစ်စစ်
+        // 💬 မင်းရဲ့ စာသားအမှန်
         const messageText = `ကျောင်းသားတွေကို တစ်နေ့လုံး စာပြရတာ ပင်ပန်းနေမှာစိုးလို့... ကျွန်တေ့ာ်ရဲ့ မပိုးအတွက် စိတ်အမောပြေစေမယ့် ဖန်တီးမှုလေးတစ်ခု လုပ်ပေးလိုက်ပါတယ်နော်။ 
 
 ဒီနေ့အတွက် ခွန်အားဖြစ်ပါစေ ဆရာမလေး။ အမြဲတမ်း အဝေးကနေ အားပေးနေပါတယ် အမ အစစအရာရာလဲ ဂရုစိုက်ပြီးတော့ နေပါနော် ဘယ်သွားသွား မိုးမမိအောင် ထီးလေးယူသွားပါနော် ☔️💙`;
 
-        // 📸 ပုံလင့်ခ် ၇ ခုလုံး
+        // 📸 မင်းရဲ့ ImgBB ပုံလင့်ခ် ၇ ခု
+        // 💡 မှတ်ချက် - ဒီလင့်ခ်တွေက အလုပ်မလုပ်ရင် ပုံပေါ်မှာ မဟုတ်ပါဘူး။ 
         const images = [
             'https://i.ibb.co/YFw4br5H/image-1.jpg',
             'https://i.ibb.co/rKFTt4NH/image-2.jpg',
@@ -259,7 +128,6 @@
         let currentSlideIdx = 0;
         let slideInterval;
         let typingIdx = 0;
-        let isTyping = false;
 
         // Initialize Slideshow Images
         images.forEach((src, idx) => {
@@ -268,45 +136,20 @@
             img.alt = `Teacher Photo ${idx + 1}`;
             img.classList.add('teacher-photo');
             if (idx === 0) img.classList.add('active');
+            
+            // 💡 ပုံမပေါ်လာတဲ့ပြဿနာကို ဉာဏ်ဆင်ပြီး ဖြေရှင်းသည် (Fallback)
+            img.onerror = function() {
+                this.src = 'https://via.placeholder.com/200?text=Photo+Missing'; // ပုံပျက်နေရင် ဒီစာသားလေး ပေါ်လာမယ်
+            };
+            
             slideshow.appendChild(img);
         });
 
         const slides = document.querySelectorAll('.teacher-photo');
 
-        // Open Modal Event
-        giftCard.addEventListener('click', () => {
-            modalOverlay.classList.add('active');
-            music.play().catch(err => console.log("Audio play blocked"));
-
-            if (!isTyping) {
-                isTyping = true;
-                typedMessage.innerHTML = "";
-                typeWriter();
-            }
-            startSlideshow();
-        });
-
-        // Close Modal Event
-        closeBtn.addEventListener('click', () => {
-            modalOverlay.classList.remove('active');
-            music.pause();
-            music.currentTime = 0; // သီချင်းကို အစကနေ ပြန်စရန်
-            
-            isTyping = false;
-            typingIdx = 0;
-            typedMessage.innerHTML = "";
-            stopSlideshow();
-        });
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeBtn.click();
-            }
-        });
-
         // Typewriter function
         function typeWriter() {
-            if (typingIdx < messageText.length && isTyping) {
+            if (typingIdx < messageText.length) {
                 typedMessage.innerHTML += messageText.charAt(typingIdx);
                 typingIdx++;
                 setTimeout(typeWriter, 70);
@@ -324,35 +167,17 @@
             showSlide(currentSlideIdx);
         }
 
+        // Website တက်လာတာနဲ့ တန်းပွင့်အောင် လုပ်ထားသည်
+        window.onload = function() {
+            typeWriter();
+            startSlideshow();
+        };
+
         function startSlideshow() {
-            if (!slideInterval) {
-                currentSlideIdx = 0;
-                showSlide(currentSlideIdx);
-                slideInterval = setInterval(nextSlide, 3000); 
-            }
+            currentSlideIdx = 0;
+            showSlide(currentSlideIdx);
+            slideInterval = setInterval(nextSlide, 3000); // ၃ စက္ကန့်တစ်ခါ ပုံပြောင်းမည်
         }
-
-        function stopSlideshow() {
-            if (slideInterval) {
-                clearInterval(slideInterval);
-                slideInterval = null;
-            }
-        }
-
-        // Falling items generator
-        function createFallingItem() {
-            const item = document.createElement('div');
-            item.classList.add('falling-item');
-            const items = ['🌸', '✨', '🎈', '🍀', '☔️', 'ထီး'];
-            item.innerText = items[Math.floor(Math.random() * items.length)];
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.animationDuration = Math.random() * 3 + 2 + 's';
-            item.style.opacity = Math.random();
-            item.style.fontSize = Math.random() * 15 + 15 + 'px';
-            document.body.appendChild(item);
-            setTimeout(() => { item.remove(); }, 5000);
-        }
-        setInterval(createFallingItem, 300);
     </script>
 </body>
 </html>
